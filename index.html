@@ -152,6 +152,15 @@
     .call-panel { padding: 30px; border: 2px solid var(--ink); border-radius: var(--radius); background: rgba(255, 253, 248, .62); }
     .call-panel h3 { font-size: 1.8rem; margin-bottom: 12px; }
     .call-panel > p:last-child { margin-bottom: 0; }
+    .guidelines-wide { margin-top: 54px; }
+    .guidelines-intro { max-width: 820px; }
+    .guideline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .guideline-block { padding: 22px; border: 1px solid var(--ink); border-radius: 18px; background: var(--white); }
+    .guideline-block h4 { margin: 0 0 10px; font-size: 1.08rem; }
+    .guideline-block p:last-child { margin-bottom: 0; }
+    .template-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .template-link { display: inline-flex; padding: 9px 13px; border: 1px solid var(--ink); border-radius: 999px; font-weight: 850; text-decoration: none; }
+    .template-link:hover { background: var(--ink); color: var(--white); }
     .topics-wide { margin-top: 54px; }
     .topic-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 22px 0 0; padding: 0; list-style: none; }
     .topic-list li { padding: 18px; border: 1px solid var(--ink); border-radius: 18px; background: var(--white); }
@@ -181,6 +190,7 @@
       .fact:nth-child(3) { border-left: 1px solid var(--line); }
       .themes, .organizers { grid-template-columns: 1fr; }
       .topic-list { grid-template-columns: repeat(2, 1fr); }
+      .guideline-grid { grid-template-columns: 1fr; }
       .section { padding: 82px 0; }
       .slot { grid-template-columns: 105px 1fr; }
       .slot span:last-child { display: none; }
@@ -210,7 +220,7 @@
         <a href="#call">Call</a>
         <a href="#programme">Programme</a>
         <a href="#people">People</a>
-        <a class="nav-cta" href="#call">Participate</a>
+        <a class="nav-cta" href="#submission-guidelines">Participate</a>
       </div>
     </nav>
   </header>
@@ -293,13 +303,6 @@
           <div class="hero-actions">
             <span class="button primary disabled" aria-disabled="true">Submission link · <span class="tba">To be announced</span></span>
           </div>
-          <div class="call-sections">
-            <section class="call-panel" aria-labelledby="submission-title">
-              <h3 id="submission-title">Submission Guidelines</h3>
-              <p>Submission instructions, formatting requirements, deadlines, and the submission platform will be announced soon.</p>
-              <p class="tba">Details to be announced.</p>
-            </section>
-          </div>
         </div>
         <aside class="paper-box" aria-label="Submission details">
           <dl>
@@ -314,7 +317,31 @@
         </aside>
       </div>
       <div class="wrap">
-        <section class="call-panel topics-wide" aria-labelledby="topics-title">
+        <section class="call-panel guidelines-wide" id="submission-guidelines" aria-labelledby="submission-guidelines-title">
+          <h3 id="submission-guidelines-title">Submission guidelines</h3>
+          <p class="guidelines-intro">We invite Challenge Papers addressing one or more of the workshop’s <a class="conference-link" href="#topics-of-interest">topics of interest</a>. The submission deadline and submission platform will be announced soon.</p>
+          <div class="guideline-grid">
+            <div class="guideline-block">
+              <h4>Submission format</h4>
+              <p>Challenge Papers should be 2–4 pages long, prepared as a PDF using the ACM single-column manuscript format. Contributions should identify a meaningful challenge that benefits from interdisciplinary discussion.</p>
+            </div>
+            <div class="guideline-block">
+              <h4>Templates</h4>
+              <p>Please use the official ACM Primary Article Template referenced by MUM 2026.</p>
+              <div class="template-links">
+                <a class="template-link" href="https://authors.acm.org/proceedings/production-information/preparing-your-article-with-latex" target="_blank" rel="noopener noreferrer">LaTeX template ↗</a>
+                <a class="template-link" href="https://authors.acm.org/proceedings/production-information/preparing-your-article-with-microsoft-word" target="_blank" rel="noopener noreferrer">Word template ↗</a>
+              </div>
+            </div>
+            <div class="guideline-block">
+              <h4>Camera-Ready and Presentation Instructions</h4>
+              <p class="tba">To be announced.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="wrap">
+        <section class="call-panel topics-wide" id="topics-of-interest" aria-labelledby="topics-title">
           <h3 id="topics-title">Topics of interest</h3>
           <p>We welcome contributions across computational materials, particularly work connecting design, biomedical engineering, aerospace engineering, HCI, materials science, and embedded intelligence. Relevant topics include, but are not limited to:</p>
           <ul class="topic-list">
