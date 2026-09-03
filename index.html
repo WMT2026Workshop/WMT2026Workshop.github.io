@@ -145,6 +145,19 @@
     .person a { color: var(--white); text-underline-offset: 4px; word-break: break-word; }
     .person-links { display: flex; flex-wrap: wrap; gap: 8px 18px; }
     .conference-link { font-weight: inherit; text-underline-offset: 4px; }
+    .venue-link { text-underline-offset: 4px; }
+
+    .call-sections { display: grid; gap: 18px; margin-top: 48px; }
+    .call-panel { padding: 30px; border: 2px solid var(--ink); border-radius: var(--radius); background: rgba(255, 253, 248, .62); }
+    .call-panel h3 { font-size: 1.8rem; margin-bottom: 12px; }
+    .call-panel > p:last-child { margin-bottom: 0; }
+    .topic-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 22px 0 0; padding: 0; list-style: none; }
+    .topic-list li { padding: 18px; border: 1px solid var(--ink); border-radius: 18px; background: var(--white); }
+    .topic-list strong { display: block; margin-bottom: 5px; }
+
+    .accepted-papers { display: grid; grid-template-columns: .72fr 1.28fr; gap: 90px; align-items: start; }
+    .accepted-placeholder { padding: 34px; border: 2px solid var(--ink); border-radius: var(--radius); background: var(--blue); box-shadow: 10px 12px 0 var(--ink); }
+    .accepted-placeholder p:last-child { margin-bottom: 0; }
 
     .closing { text-align: center; padding: 120px 0; }
     .closing h2 { max-width: 900px; margin-inline: auto; }
@@ -159,12 +172,12 @@
       .wrap { width: min(calc(100% - 28px), var(--max)); }
       .nav-links a:not(.nav-cta) { display: none; }
       .hero { min-height: auto; padding-top: 70px; }
-      .hero-grid, .intro-grid, .questions, .callout-grid, .speaker-grid { grid-template-columns: 1fr; gap: 42px; }
+      .hero-grid, .intro-grid, .questions, .callout-grid, .speaker-grid, .accepted-papers { grid-template-columns: 1fr; gap: 42px; }
       .matter { min-height: 390px; max-width: 410px; margin-inline: auto; width: 100%; }
       .orb.one { right: 30px; width: 240px; height: 285px; }
       .facts { grid-template-columns: repeat(2, 1fr); }
       .fact:nth-child(3) { border-left: 1px solid var(--line); }
-      .themes, .organizers { grid-template-columns: 1fr; }
+      .themes, .organizers, .topic-list { grid-template-columns: 1fr; }
       .section { padding: 82px 0; }
       .slot { grid-template-columns: 105px 1fr; }
       .slot span:last-child { display: none; }
@@ -218,7 +231,7 @@
     <div class="fact-strip">
       <div class="wrap facts">
         <div class="fact"><span>Date</span><strong>1 December 2026</strong></div>
-        <div class="fact"><span>Location</span><strong>Glasgow, United Kingdom</strong></div>
+        <div class="fact"><span>Location</span><strong><a class="venue-link" href="https://mum-conf.org/2026/index.php?web=venue" target="_blank" rel="noopener noreferrer" aria-label="View the Advanced Research Centre venue details">Advanced Research Centre, University of Glasgow ↗</a></strong></div>
         <div class="fact"><span>Format</span><strong>Half-day · In person</strong></div>
         <div class="fact"><span>At</span><strong>25th ACM MUM Conference</strong></div>
       </div>
@@ -273,6 +286,23 @@
           <div class="hero-actions">
             <span class="button primary disabled" aria-disabled="true">Submission link · <span class="tba">To be announced</span></span>
           </div>
+          <div class="call-sections">
+            <section class="call-panel" aria-labelledby="topics-title">
+              <h3 id="topics-title">Topics of interest</h3>
+              <p>We welcome contributions across computational materials, particularly work connecting design, biomedical engineering, aerospace engineering, HCI, materials science, and embedded intelligence. Relevant topics include, but are not limited to:</p>
+              <ul class="topic-list">
+                <li><strong>Materials that sense</strong>Integrated and distributed sensing, flexible electronics, biomaterials, context awareness, and the capture of human activity or environmental change.</li>
+                <li><strong>Materials that interpret</strong>Edge AI, TinyML, embedded intelligence, local inference, distributed computing, and resource-aware learning within material systems.</li>
+                <li><strong>Materials that respond</strong>Actuation, shape change, adaptive structures, dynamic physical properties, and visual, tactile, acoustic, thermal, or mechanical feedback.</li>
+                <li><strong>Materials that live with people</strong>Human-material interaction, wearables, body-integrated technologies, prosthetics and assistive systems, interactive environments, digital fabrication, mobility and aerospace applications, accessibility, sustainability, and responsible AI.</li>
+              </ul>
+            </section>
+            <section class="call-panel" aria-labelledby="submission-title">
+              <h3 id="submission-title">Submission</h3>
+              <p>Submission instructions, formatting requirements, deadlines, and the submission platform will be announced soon.</p>
+              <p class="tba">Details to be announced.</p>
+            </section>
+          </div>
         </div>
         <aside class="paper-box" aria-label="Submission details">
           <dl>
@@ -317,6 +347,19 @@
           <p class="role">Materials scientist and aerospace engineer · <a href="https://uke.it/en" target="_blank" rel="noopener noreferrer">University of Enna “Kore”</a></p>
           <p class="big-copy">An interdisciplinary materials-science perspective on sensing, adaptive response, manufacturability, reliability, and structural performance.</p>
           <p class="body-copy">Prof. Scalici’s work spans advanced composites, smart and multifunctional materials, experimental and fracture mechanics, structural integrity, biomaterials, aerospace structures, and sustainable composites. His opening lecture will connect material design and characterisation with materials made to interact with people and their environment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="accepted-papers" aria-labelledby="accepted-papers-title">
+      <div class="wrap accepted-papers">
+        <div>
+          <p class="section-kicker">Workshop contributions</p>
+          <h2 id="accepted-papers-title">Accepted papers</h2>
+        </div>
+        <div class="accepted-placeholder">
+          <p class="big-copy">The accepted papers will be announced here.</p>
+          <p>Titles, authors, and contribution details will be published following the review and notification process.</p>
         </div>
       </div>
     </section>
