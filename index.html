@@ -88,6 +88,21 @@
     .fact span { display: block; color: var(--muted); font-size: .77rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; margin-bottom: 10px; }
     .fact strong { font-size: 1.16rem; line-height: 1.22; }
 
+    .news { padding: 70px 0; }
+    .news-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 90px; align-items: start; }
+    .news-item { padding: 28px 30px; border: 2px solid var(--ink); border-radius: var(--radius); background: var(--white); box-shadow: 8px 10px 0 var(--ink); }
+    .news-item time { display: block; margin-bottom: 10px; color: var(--muted); font-size: .78rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .news-item h3 { margin-bottom: 8px; font-size: 1.65rem; }
+    .news-item p:last-child { margin-bottom: 0; }
+
+    .important-dates { background: var(--blue); border-bottom: 2px solid var(--ink); }
+    .dates-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 90px; align-items: start; }
+    .date-list { margin: 0; border-top: 2px solid var(--ink); }
+    .date-item { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: baseline; padding: 22px 0; border-bottom: 1px solid rgba(16, 32, 27, .35); }
+    .date-item dt { font-weight: 850; }
+    .date-item dd { margin: 0; text-align: right; font-weight: 900; }
+    .date-note { margin: 18px 0 0; font-size: .94rem; color: #253b49; }
+
     .section { padding: 112px 0; }
     .intro-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 90px; }
     .section-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: .76rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
@@ -183,7 +198,7 @@
       .wrap { width: min(calc(100% - 28px), var(--max)); }
       .nav-links a:not(.nav-cta) { display: none; }
       .hero { min-height: auto; padding-top: 70px; }
-      .hero-grid, .intro-grid, .questions, .callout-grid, .speaker-grid, .accepted-papers { grid-template-columns: 1fr; gap: 42px; }
+      .hero-grid, .intro-grid, .news-grid, .dates-grid, .questions, .callout-grid, .speaker-grid, .accepted-papers { grid-template-columns: 1fr; gap: 42px; }
       .matter { min-height: 390px; max-width: 410px; margin-inline: auto; width: 100%; }
       .orb.one { right: 30px; width: 240px; height: 285px; }
       .facts { grid-template-columns: repeat(2, 1fr); }
@@ -204,6 +219,8 @@
       .theme-card { min-height: 240px; }
       .topic-list { grid-template-columns: 1fr; }
       .slot { grid-template-columns: 1fr; gap: 3px; }
+      .date-item { grid-template-columns: 1fr; gap: 4px; }
+      .date-item dd { text-align: left; }
       .footer-grid { align-items: flex-start; flex-direction: column; }
     }
   </style>
@@ -216,6 +233,7 @@
         <img class="brand-logo" src="Logo_WMT.png" alt="WMT 2026 logo" width="62" height="62">
       </a>
       <div class="nav-links">
+        <a href="#news">News</a>
         <a href="#about">About</a>
         <a href="#call">Call</a>
         <a href="#programme">Programme</a>
@@ -235,6 +253,7 @@
           <div class="hero-actions">
             <a class="button primary" href="#call">Call for participation</a>
             <a class="button" href="#about">Explore the workshop ↓</a>
+            <a class="button" href="#important-dates">Important dates ↓</a>
           </div>
         </div>
         <div class="matter" aria-label="Abstract composition representing adaptive computational materials">
@@ -253,6 +272,46 @@
         <div class="fact"><span>At</span><strong>25th ACM MUM Conference</strong></div>
       </div>
     </div>
+
+    <section class="news" id="news" aria-labelledby="news-title">
+      <div class="wrap news-grid">
+        <div>
+          <p class="section-kicker">Latest updates</p>
+          <h2 id="news-title">News</h2>
+        </div>
+        <article class="news-item">
+          <time datetime="2026-09">September 2026 🎉</time>
+          <h3>The WMT 2026 website is live!</h3>
+          <p>Welcome to the official website of the When Materials Think 2026 workshop. More updates will follow soon.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section important-dates" id="important-dates" aria-labelledby="important-dates-title">
+      <div class="wrap dates-grid">
+        <div>
+          <p class="section-kicker">Save the dates</p>
+          <h2 id="important-dates-title">Important<br>dates</h2>
+        </div>
+        <div>
+          <dl class="date-list">
+            <div class="date-item">
+              <dt>Workshop Paper Submission Deadline:</dt>
+              <dd><span class="tba">To be announced</span></dd>
+            </div>
+            <div class="date-item">
+              <dt>Notification to Authors:</dt>
+              <dd><span class="tba">To be announced</span></dd>
+            </div>
+            <div class="date-item">
+              <dt>Workshop Date:</dt>
+              <dd><time datetime="2026-12-01">1 December 2026</time></dd>
+            </div>
+          </dl>
+          <p class="date-note">All deadlines refer to midnight (23:59) in the AoE (Anywhere on Earth) time zone.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="section" id="about">
       <div class="wrap intro-grid">
