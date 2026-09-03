@@ -109,6 +109,22 @@
     .section-kicker::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--coral); border: 1px solid var(--ink); }
     .big-copy { font-size: clamp(1.45rem, 3vw, 2.35rem); line-height: 1.24; letter-spacing: -.035em; }
     .body-copy { max-width: 760px; color: #394741; font-size: 1.03rem; }
+    .premise-accordion { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 10px; align-items: start; }
+    .premise-panel { border: 2px solid var(--ink); border-radius: 24px; background: var(--white); box-shadow: 8px 10px 0 var(--ink); overflow: hidden; }
+    .premise-panel summary { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 26px; cursor: pointer; list-style: none; font-size: 1.22rem; font-weight: 900; line-height: 1.2; }
+    .premise-panel summary::-webkit-details-marker { display: none; }
+    .premise-panel summary::after { content: "+"; flex: 0 0 auto; width: 32px; height: 32px; display: grid; place-items: center; border: 1.5px solid var(--ink); border-radius: 50%; font-size: 1.35rem; line-height: 1; transition: transform .18s ease; }
+    .premise-panel[open] summary::after { content: "−"; transform: rotate(180deg); }
+    .premise-panel:first-child summary { background: var(--blue); }
+    .premise-panel:nth-child(2) summary { background: var(--coral); }
+    .premise-panel summary:hover, .premise-panel summary:focus-visible { background: var(--lime); }
+    .premise-panel summary:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+    .premise-content { padding: 8px 24px 26px; border-top: 2px solid var(--ink); background: var(--white); }
+    .premise-content .themes { margin-top: 18px; }
+    .premise-content .themes { grid-template-columns: 1fr; }
+    .premise-content .theme-card { min-height: 220px; }
+    .premise-content .theme-card { color: var(--white); }
+    .premise-content .question-list { margin-top: 18px; }
 
     .dark { color: var(--white); background: var(--ink); }
     .dark .section-kicker { color: var(--lime); }
@@ -206,6 +222,7 @@
       .themes, .organizers { grid-template-columns: 1fr; }
       .topic-list { grid-template-columns: repeat(2, 1fr); }
       .guideline-grid { grid-template-columns: 1fr; }
+      .premise-accordion { grid-template-columns: 1fr; gap: 16px; }
       .section { padding: 82px 0; }
       .slot { grid-template-columns: 105px 1fr; }
       .slot span:last-child { display: none; }
@@ -320,34 +337,30 @@
           <p class="big-copy">Materials are no longer passive substrates. They can sense, interpret, adapt, and communicate — becoming computational media in their own right.</p>
           <p class="body-copy">WMT 2026 explores what becomes possible when material properties, sensing, embedded intelligence, actuation, and human interaction are designed as one system. Through challenge-based discussion, this workshop will connect communities that too often approach these questions separately and establish a shared interdisciplinary research agenda.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section dark" aria-labelledby="themes-title">
-      <div class="wrap">
-        <p class="section-kicker">Four perspectives</p>
-        <h2 id="themes-title">A material can…</h2>
-        <div class="themes">
-          <article class="theme-card"><span class="theme-number">01 / SENSE</span><div><h3>Sense</h3><p>Integrated and distributed sensing, flexible electronics, biomaterials, context awareness, and methods for capturing human activity or environmental change.</p></div></article>
-          <article class="theme-card"><span class="theme-number">02 / INTERPRET</span><div><h3>Interpret</h3><p>Edge AI, TinyML, embedded intelligence, local inference, distributed computing, and resource-aware learning within material systems.</p></div></article>
-          <article class="theme-card"><span class="theme-number">03 / RESPOND</span><div><h3>Respond</h3><p>Actuation, shape change, adaptive structures, dynamic physical properties, and visual, tactile, acoustic, thermal, or mechanical feedback.</p></div></article>
-          <article class="theme-card"><span class="theme-number">04 / LIVE</span><div><h3>Live with people</h3><p>Human-material interaction, wearables, prosthetics, interactive environments, fabrication, privacy, accessibility, sustainability, and responsible AI.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="questions-title">
-      <div class="wrap questions">
-        <div>
-          <p class="section-kicker">Open questions</p>
-          <h2 id="questions-title">Questions no single discipline can answer</h2>
-        </div>
-        <div class="question-list">
-          <div class="question"><span>01</span><p>How can sensing, computation, and actuation be co-designed with a material’s physical, aesthetic, and structural properties?</p></div>
-          <div class="question"><span>02</span><p>How can people perceive, interpret, control, trust, and appropriate autonomously adapting materials?</p></div>
-          <div class="question"><span>03</span><p>How should we evaluate systems whose behaviour changes across time, context, and physical configuration?</p></div>
-          <div class="question"><span>04</span><p>How should privacy, security, accessibility, repairability, sustainability, and end-of-life shape computational materials?</p></div>
-          <div class="question"><span>05</span><p>Which shared terminologies, benchmarks, toolkits, and infrastructures can support truly interdisciplinary research?</p></div>
+        <div class="premise-accordion">
+            <details class="premise-panel">
+              <summary>Four perspectives — a material can…</summary>
+              <div class="premise-content">
+                <div class="themes">
+                  <article class="theme-card"><span class="theme-number">01 / SENSE</span><div><h3>Sense</h3><p>Integrated and distributed sensing, flexible electronics, biomaterials, context awareness, and methods for capturing human activity or environmental change.</p></div></article>
+                  <article class="theme-card"><span class="theme-number">02 / INTERPRET</span><div><h3>Interpret</h3><p>Edge AI, TinyML, embedded intelligence, local inference, distributed computing, and resource-aware learning within material systems.</p></div></article>
+                  <article class="theme-card"><span class="theme-number">03 / RESPOND</span><div><h3>Respond</h3><p>Actuation, shape change, adaptive structures, dynamic physical properties, and visual, tactile, acoustic, thermal, or mechanical feedback.</p></div></article>
+                  <article class="theme-card"><span class="theme-number">04 / LIVE</span><div><h3>Live with people</h3><p>Human-material interaction, wearables, prosthetics, interactive environments, fabrication, privacy, accessibility, sustainability, and responsible AI.</p></div></article>
+                </div>
+              </div>
+            </details>
+            <details class="premise-panel">
+              <summary>Open questions — explore the research challenges</summary>
+              <div class="premise-content">
+                <div class="question-list">
+                  <div class="question"><span>01</span><p>How can sensing, computation, and actuation be co-designed with a material’s physical, aesthetic, and structural properties?</p></div>
+                  <div class="question"><span>02</span><p>How can people perceive, interpret, control, trust, and appropriate autonomously adapting materials?</p></div>
+                  <div class="question"><span>03</span><p>How should we evaluate systems whose behaviour changes across time, context, and physical configuration?</p></div>
+                  <div class="question"><span>04</span><p>How should privacy, security, accessibility, repairability, sustainability, and end-of-life shape computational materials?</p></div>
+                  <div class="question"><span>05</span><p>Which shared terminologies, benchmarks, toolkits, and infrastructures can support truly interdisciplinary research?</p></div>
+                </div>
+              </div>
+            </details>
         </div>
       </div>
     </section>
@@ -420,7 +433,7 @@
         <p class="body-copy">The precise timing may be adapted to the official <a class="conference-link" href="https://www.mum-conf.org/2026/" target="_blank" rel="noopener noreferrer">MUM</a> 2026 programme.</p>
         <div class="schedule" role="list" aria-label="Preliminary workshop programme">
           <div class="slot" role="listitem"><time>09:00–09:10</time><strong>Welcome, introduction, and workshop overview</strong><span>10 min</span></div>
-          <div class="slot" role="listitem"><time>09:10–09:45</time><strong>Invited talk by Prof. Tommaso Scalici</strong><span>35 min</span></div>
+          <div class="slot" role="listitem"><time>09:10–09:45</time><strong>Invited talk by <a class="conference-link" href="#tommaso-scalici">Prof. Tommaso Scalici</a></strong><span>35 min</span></div>
           <div class="slot" role="listitem"><time>09:45–10:15</time><strong>Participant lightning talks · Sense</strong><span>30 min</span></div>
           <div class="slot" role="listitem"><time>10:15–11:00</time><strong>Collaborative challenge mapping · Interpret</strong><span>45 min</span></div>
           <div class="slot" role="listitem"><time>11:00–11:15</time><strong>Coffee break</strong><span>15 min</span></div>
@@ -431,7 +444,7 @@
       </div>
     </section>
 
-    <section class="section" aria-labelledby="speaker-title">
+    <section class="section" id="tommaso-scalici" aria-labelledby="speaker-title">
       <div class="wrap speaker-grid">
         <div class="speaker-portrait">
           <img src="images/tommaso-scalici.jpg" alt="Portrait of Prof. Tommaso Scalici" loading="lazy" onerror="this.hidden=true">
