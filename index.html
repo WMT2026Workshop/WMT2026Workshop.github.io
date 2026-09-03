@@ -71,37 +71,14 @@
     .tba { color: #bd2f27; font-weight: 900; }
     .button.primary .tba { color: var(--coral); }
 
-    .matter { position: relative; min-height: 470px; isolation: isolate; }
-    .smart-material {
-      position: absolute; inset: 10px 0 0;
-      overflow: hidden;
-      border: 2px solid var(--ink);
-      border-radius: 44% 56% 48% 52% / 52% 40% 60% 48%;
-      background: var(--lime);
-      box-shadow: 11px 14px 0 var(--ink);
-      animation: material-breathe 9s ease-in-out infinite alternate;
-    }
-    .smart-material::after {
-      content: "SENSE · INTERPRET · RESPOND";
-      position: absolute; right: 24px; bottom: 21px;
-      max-width: 170px; text-align: right;
-      font-size: .68rem; font-weight: 900; line-height: 1.35;
-      letter-spacing: .11em;
-      pointer-events: none;
-    }
-    .material-network { display: block; width: 100%; height: 100%; }
-    .material-chip {
-      position: absolute; z-index: 2; display: grid; place-items: center;
-      width: 70px; height: 70px; border: 2px solid var(--ink); border-radius: 18px;
-      background: var(--coral); box-shadow: 5px 6px 0 var(--ink);
-      font-size: .64rem; font-weight: 900; letter-spacing: .08em; text-align: center;
-      transform: rotate(-7deg); pointer-events: none;
-    }
-    .material-chip.input { left: -8px; top: 54px; }
-    .material-chip.output { right: -4px; top: 118px; background: var(--blue); transform: rotate(8deg); }
-    @keyframes material-breathe {
-      to { border-radius: 53% 47% 42% 58% / 43% 56% 44% 57%; transform: rotate(1.2deg) scale(1.015); }
-    }
+    .matter { position: relative; min-height: 470px; }
+    .orb { position: absolute; border: 2px solid var(--ink); box-shadow: 11px 14px 0 var(--ink); }
+    .orb.one { width: 265px; height: 320px; top: 45px; right: 50px; border-radius: 48% 52% 36% 64% / 52% 35% 65% 48%; background: var(--lime); animation: morph 8s ease-in-out infinite alternate; }
+    .orb.two { width: 160px; height: 160px; bottom: 28px; left: 15px; border-radius: 58% 42% 64% 36%; background: var(--coral); animation: drift 6s ease-in-out infinite alternate; }
+    .orb.three { width: 118px; height: 118px; top: 20px; left: 30px; border-radius: 50%; background: var(--blue); box-shadow: 7px 9px 0 var(--ink); animation: drift 5s ease-in-out infinite alternate-reverse; }
+    .orb-label { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 55px; font-size: 1.7rem; font-weight: 900; line-height: 1.05; transform: rotate(-5deg); }
+    @keyframes morph { to { border-radius: 63% 37% 58% 42% / 35% 62% 38% 65%; transform: rotate(4deg); } }
+    @keyframes drift { to { transform: translate(12px, -14px) rotate(7deg); } }
 
     .fact-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
     .facts { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -184,9 +161,7 @@
       .hero { min-height: auto; padding-top: 70px; }
       .hero-grid, .intro-grid, .questions, .callout-grid, .speaker-grid { grid-template-columns: 1fr; gap: 42px; }
       .matter { min-height: 390px; max-width: 410px; margin-inline: auto; width: 100%; }
-      .smart-material { inset: 8px 10px 4px; }
-      .material-chip.input { left: 2px; }
-      .material-chip.output { right: 3px; }
+      .orb.one { right: 30px; width: 240px; height: 285px; }
       .facts { grid-template-columns: repeat(2, 1fr); }
       .fact:nth-child(3) { border-left: 1px solid var(--line); }
       .themes, .organizers { grid-template-columns: 1fr; }
@@ -232,12 +207,10 @@
             <a class="button" href="#about">Explore the workshop ↓</a>
           </div>
         </div>
-        <div class="matter" role="img" aria-label="An adaptive material network sensing input, transmitting information, and responding">
-          <div class="smart-material">
-            <canvas class="material-network" aria-hidden="true"></canvas>
-          </div>
-          <div class="material-chip input">SENSE</div>
-          <div class="material-chip output">RESPOND</div>
+        <div class="matter" aria-label="Abstract composition representing adaptive computational materials">
+          <div class="orb three"></div>
+          <div class="orb one"><div class="orb-label">Matter as an active participant</div></div>
+          <div class="orb two"></div>
         </div>
       </div>
     </section>
@@ -393,83 +366,5 @@
       <span>A workshop at the 25th ACM International Conference on Mobile and Ubiquitous Multimedia (<a class="conference-link" href="https://www.mum-conf.org/2026/" target="_blank" rel="noopener noreferrer">MUM</a> 2026).</span>
     </div>
   </footer>
-  <script>
-    (() => {
-      const canvas = document.querySelector('.material-network');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const pointer = { x: -1000, y: -1000, active: false };
-      let nodes = [], width = 0, height = 0, frame = 0;
-
-      const buildNetwork = () => {
-        const rect = canvas.getBoundingClientRect();
-        const dpr = Math.min(devicePixelRatio || 1, 2);
-        width = rect.width; height = rect.height;
-        canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        nodes = [];
-        const cols = width < 360 ? 6 : 7;
-        const rows = 7;
-        for (let row = 0; row < rows; row++) {
-          for (let col = 0; col < cols; col++) {
-            const stagger = row % 2 ? .48 : 0;
-            const x = 34 + ((col + stagger) / (cols - .05)) * (width - 68);
-            const y = 35 + (row / (rows - 1)) * (height - 80);
-            nodes.push({ x, y, baseX: x, baseY: y, row, col, phase: Math.random() * Math.PI * 2 });
-          }
-        }
-      };
-
-      const draw = (time = 0) => {
-        const t = reducedMotion ? 0 : time * .001;
-        ctx.clearRect(0, 0, width, height);
-        nodes.forEach(node => {
-          const wave = Math.sin(t * 1.25 + node.col * .72 - node.row * .4);
-          let dx = Math.cos(t * .7 + node.phase) * 3;
-          let dy = wave * 7 + Math.sin(t + node.phase) * 2;
-          const px = node.baseX + dx, py = node.baseY + dy;
-          const dist = Math.hypot(px - pointer.x, py - pointer.y);
-          if (pointer.active && dist < 95) {
-            const force = (95 - dist) / 95;
-            dx += (px - pointer.x) / (dist || 1) * force * 15;
-            dy += (py - pointer.y) / (dist || 1) * force * 15;
-          }
-          node.x = node.baseX + dx; node.y = node.baseY + dy;
-        });
-
-        ctx.lineWidth = 1.35;
-        ctx.strokeStyle = 'rgba(16, 32, 27, .48)';
-        nodes.forEach((node, i) => {
-          nodes.slice(i + 1).forEach(other => {
-            const adjacent = Math.abs(node.row - other.row) <= 1 && Math.hypot(node.baseX - other.baseX, node.baseY - other.baseY) < width / 4.2;
-            if (!adjacent) return;
-            ctx.beginPath(); ctx.moveTo(node.x, node.y); ctx.lineTo(other.x, other.y); ctx.stroke();
-          });
-        });
-
-        const pulse = (t * 4.3) % Math.max(width - 70, 1) + 35;
-        nodes.forEach(node => {
-          const active = Math.abs(node.x - pulse) < 28;
-          ctx.beginPath(); ctx.arc(node.x, node.y, active ? 7 : 4.2, 0, Math.PI * 2);
-          ctx.fillStyle = active ? '#ff765d' : ((node.row + node.col) % 5 === 0 ? '#7cb7ff' : '#10201b');
-          ctx.fill();
-          if (active) {
-            ctx.beginPath(); ctx.arc(node.x, node.y, 12, 0, Math.PI * 2);
-            ctx.strokeStyle = 'rgba(255, 118, 93, .55)'; ctx.lineWidth = 2; ctx.stroke();
-          }
-        });
-        if (!reducedMotion) frame = requestAnimationFrame(draw);
-      };
-
-      const locatePointer = event => {
-        const rect = canvas.getBoundingClientRect();
-        pointer.x = event.clientX - rect.left; pointer.y = event.clientY - rect.top; pointer.active = true;
-      };
-      canvas.addEventListener('pointermove', locatePointer);
-      canvas.addEventListener('pointerleave', () => { pointer.active = false; });
-      new ResizeObserver(() => { cancelAnimationFrame(frame); buildNetwork(); draw(); }).observe(canvas);
-    })();
-  </script>
 </body>
 </html>
