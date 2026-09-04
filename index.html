@@ -121,26 +121,16 @@
     .body-copy { max-width: 760px; color: #394741; font-size: 1.03rem; }
     .premise-accordion { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 10px; align-items: start; }
     .premise-panel { border: 2px solid var(--ink); border-radius: 24px; background: var(--white); box-shadow: 8px 10px 0 var(--ink); overflow: hidden; }
-    .premise-panel > summary { min-height: 112px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 26px; cursor: pointer; list-style: none; font-size: 1.22rem; font-weight: 900; line-height: 1.2; }
-    .premise-panel > summary::-webkit-details-marker { display: none; }
-    .premise-panel > summary::after { content: "+"; flex: 0 0 auto; width: 32px; height: 32px; display: grid; place-items: center; border: 1.5px solid var(--ink); border-radius: 50%; font-size: 1.35rem; line-height: 1; transition: transform .18s ease; }
-    .premise-panel[open] > summary::after { content: "−"; transform: rotate(180deg); }
-    .premise-panel:first-child > summary { background: var(--blue); }
-    .premise-panel:nth-child(2) > summary { background: var(--coral); }
-    .premise-panel > summary:hover, .premise-panel > summary:focus-visible { background: var(--lime); }
-    .premise-panel > summary:focus-visible { outline: 3px solid var(--blue); outline-offset: -3px; }
+    .premise-heading { min-height: 112px; display: flex; align-items: center; padding: 24px 26px; margin: 0; font-size: 1.22rem; font-weight: 900; line-height: 1.2; }
+    .premise-panel:first-child .premise-heading { background: var(--blue); }
+    .premise-panel:nth-child(2) .premise-heading { background: var(--coral); }
     .premise-content { padding: 8px 24px 26px; border-top: 2px solid var(--ink); background: var(--white); }
     .perspective-list { display: grid; gap: 10px; margin-top: 18px; }
     .perspective-item { border: 1.5px solid var(--ink); border-radius: 15px; overflow: hidden; }
-    .perspective-item > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 18px; cursor: pointer; list-style: none; background: #1c3029; color: var(--white); font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
-    .perspective-item:nth-child(2) > summary { background: #26304b; }
-    .perspective-item:nth-child(3) > summary { background: #462c29; }
-    .perspective-item:nth-child(4) > summary { background: #26372a; }
-    .perspective-item > summary::-webkit-details-marker { display: none; }
-    .perspective-item > summary::after { content: "+"; flex: 0 0 auto; color: var(--lime); font-size: 1.35rem; line-height: 1; }
-    .perspective-item[open] > summary::after { content: "−"; }
-    .perspective-item > summary:hover, .perspective-item > summary:focus-visible { background: var(--ink); }
-    .perspective-item > summary:focus-visible { outline: 3px solid var(--lime); outline-offset: -3px; }
+    .perspective-item h3 { padding: 16px 18px; margin: 0; background: #1c3029; color: var(--white); font-size: 1rem; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
+    .perspective-item:nth-child(2) h3 { background: #26304b; }
+    .perspective-item:nth-child(3) h3 { background: #462c29; }
+    .perspective-item:nth-child(4) h3 { background: #26372a; }
     .perspective-item p { margin: 0; padding: 17px 18px 19px; background: var(--paper); color: #394741; }
     .premise-content .question-list { margin-top: 18px; }
 
@@ -226,12 +216,7 @@
     .template-link:hover { background: var(--ink); color: var(--white); }
     .topics-wide { margin-top: 54px; }
     .topic-disclosure { padding: 0; overflow: hidden; }
-    .topic-disclosure > summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 28px 30px; cursor: pointer; list-style: none; background: var(--white); font-size: 1.8rem; font-weight: 900; line-height: 1.15; }
-    .topic-disclosure > summary::-webkit-details-marker { display: none; }
-    .topic-disclosure > summary::after { content: "+"; flex: 0 0 auto; width: 36px; height: 36px; display: grid; place-items: center; border: 1.5px solid var(--ink); border-radius: 50%; font-size: 1.4rem; line-height: 1; }
-    .topic-disclosure[open] > summary::after { content: "−"; }
-    .topic-disclosure > summary:hover, .topic-disclosure > summary:focus-visible { background: var(--blue); }
-    .topic-disclosure > summary:focus-visible { outline: 3px solid var(--ink); outline-offset: -3px; }
+    .topic-heading { padding: 28px 30px; margin: 0; background: var(--white); font-size: 1.8rem; font-weight: 900; line-height: 1.15; }
     .topic-content { padding: 24px 30px 30px; border-top: 2px solid var(--ink); }
     .topic-content > p { max-width: 880px; }
     .topic-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 22px 0 0; padding: 0; list-style: none; }
@@ -389,19 +374,19 @@
           <p class="body-copy">WMT 2026 explores what becomes possible when material properties, sensing, embedded intelligence, actuation, and human interaction are designed as one system. Through challenge-based discussion, this workshop will connect communities that too often approach these questions separately and establish a shared interdisciplinary research agenda.</p>
         </div>
         <div class="premise-accordion">
-            <details class="premise-panel">
-              <summary>Four perspectives — a material can…</summary>
+            <section class="premise-panel" aria-labelledby="perspectives-title">
+              <h3 class="premise-heading" id="perspectives-title">Four perspectives — a material can…</h3>
               <div class="premise-content">
                 <div class="perspective-list">
-                  <details class="perspective-item"><summary>01 / Sense</summary><p>Integrated and distributed sensing, flexible electronics, biomaterials, context awareness, and methods for capturing human activity or environmental change.</p></details>
-                  <details class="perspective-item"><summary>02 / Interpret</summary><p>Edge AI, TinyML, embedded intelligence, local inference, distributed computing, and resource-aware learning within material systems.</p></details>
-                  <details class="perspective-item"><summary>03 / Respond</summary><p>Actuation, shape change, adaptive structures, dynamic physical properties, and visual, tactile, acoustic, thermal, or mechanical feedback.</p></details>
-                  <details class="perspective-item"><summary>04 / Live with people</summary><p>Human-material interaction, wearables, prosthetics, interactive environments, fabrication, privacy, accessibility, sustainability, and responsible AI.</p></details>
+                  <article class="perspective-item"><h3>01 / Sense</h3><p>Integrated and distributed sensing, flexible electronics, biomaterials, context awareness, and methods for capturing human activity or environmental change.</p></article>
+                  <article class="perspective-item"><h3>02 / Interpret</h3><p>Edge AI, TinyML, embedded intelligence, local inference, distributed computing, and resource-aware learning within material systems.</p></article>
+                  <article class="perspective-item"><h3>03 / Respond</h3><p>Actuation, shape change, adaptive structures, dynamic physical properties, and visual, tactile, acoustic, thermal, or mechanical feedback.</p></article>
+                  <article class="perspective-item"><h3>04 / Live with people</h3><p>Human-material interaction, wearables, prosthetics, interactive environments, fabrication, privacy, accessibility, sustainability, and responsible AI.</p></article>
                 </div>
               </div>
-            </details>
-            <details class="premise-panel">
-              <summary>Open questions — explore the research challenges</summary>
+            </section>
+            <section class="premise-panel" aria-labelledby="open-questions-title">
+              <h3 class="premise-heading" id="open-questions-title">Open questions — explore the research challenges</h3>
               <div class="premise-content">
                 <div class="question-list">
                   <div class="question"><span>01</span><p>How can sensing, computation, and actuation be co-designed with a material’s physical, aesthetic, and structural properties?</p></div>
@@ -411,7 +396,7 @@
                   <div class="question"><span>05</span><p>Which shared terminologies, benchmarks, toolkits, and infrastructures can support truly interdisciplinary research?</p></div>
                 </div>
               </div>
-            </details>
+            </section>
         </div>
       </div>
     </section>
@@ -440,6 +425,18 @@
         </aside>
       </div>
       <div class="wrap">
+        <section class="call-panel topics-wide topic-disclosure" id="topics-of-interest" aria-labelledby="topics-of-interest-title">
+          <h3 class="topic-heading" id="topics-of-interest-title">Topics of interest</h3>
+          <div class="topic-content">
+            <p>We welcome contributions across computational materials, particularly work connecting design, biomedical engineering, aerospace engineering, HCI, materials science, and embedded intelligence. Relevant topics include, but are not limited to:</p>
+            <ul class="topic-list">
+              <li><strong>Materials that sense</strong>Integrated and distributed sensing, flexible electronics, biomaterials, context awareness, and the capture of human activity or environmental change.</li>
+              <li><strong>Materials that interpret</strong>Edge AI, TinyML, embedded intelligence, local inference, distributed computing, and resource-aware learning within material systems.</li>
+              <li><strong>Materials that respond</strong>Actuation, shape change, adaptive structures, dynamic physical properties, and visual, tactile, acoustic, thermal, or mechanical feedback.</li>
+              <li><strong>Materials that live with people</strong>Human-material interaction, wearables, body-integrated technologies, prosthetics and assistive systems, interactive environments, digital fabrication, mobility and aerospace applications, accessibility, sustainability, and responsible AI.</li>
+            </ul>
+          </div>
+        </section>
         <section class="call-panel guidelines-wide" id="submission-guidelines" aria-labelledby="submission-guidelines-title">
           <h3 id="submission-guidelines-title">Submission guidelines</h3>
           <p class="guidelines-intro">We invite Challenge Papers addressing one or more of the workshop’s <a class="conference-link" href="#topics-of-interest">topics of interest</a>. The submission platform will be announced soon.</p>
@@ -463,20 +460,6 @@
             </div>
           </div>
         </section>
-      </div>
-      <div class="wrap">
-        <details class="call-panel topics-wide topic-disclosure" id="topics-of-interest">
-          <summary>Topics of interest</summary>
-          <div class="topic-content">
-            <p>We welcome contributions across computational materials, particularly work connecting design, biomedical engineering, aerospace engineering, HCI, materials science, and embedded intelligence. Relevant topics include, but are not limited to:</p>
-            <ul class="topic-list">
-              <li><strong>Materials that sense</strong>Integrated and distributed sensing, flexible electronics, biomaterials, context awareness, and the capture of human activity or environmental change.</li>
-              <li><strong>Materials that interpret</strong>Edge AI, TinyML, embedded intelligence, local inference, distributed computing, and resource-aware learning within material systems.</li>
-              <li><strong>Materials that respond</strong>Actuation, shape change, adaptive structures, dynamic physical properties, and visual, tactile, acoustic, thermal, or mechanical feedback.</li>
-              <li><strong>Materials that live with people</strong>Human-material interaction, wearables, body-integrated technologies, prosthetics and assistive systems, interactive environments, digital fabrication, mobility and aerospace applications, accessibility, sustainability, and responsible AI.</li>
-            </ul>
-          </div>
-        </details>
       </div>
     </section>
 
