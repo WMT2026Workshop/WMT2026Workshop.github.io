@@ -100,6 +100,7 @@
 
     .news { padding: 70px 0; }
     .news-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 90px; align-items: start; }
+    .news-list { display: grid; gap: 22px; }
     .news-item { padding: 28px 30px; border: 2px solid var(--ink); border-radius: var(--radius); background: var(--white); box-shadow: 8px 10px 0 var(--ink); }
     .news-item time { display: block; margin-bottom: 10px; color: var(--muted); font-size: .78rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
     .news-item h3 { margin-bottom: 8px; font-size: 1.65rem; }
@@ -333,11 +334,19 @@
           <p class="section-kicker">Latest updates</p>
           <h2 id="news-title">News</h2>
         </div>
-        <article class="news-item">
-          <time datetime="2026-09">September 2026 🎉</time>
-          <h3>The WMT 2026 website is live!</h3>
-          <p>Welcome to the official website of the When Materials Think 2026 workshop. More updates will follow soon.</p>
-        </article>
+        <div class="news-list">
+          <article class="news-item">
+            <time datetime="2026-09-05">5 September 2026</time>
+            <h3>Submissions are now open!</h3>
+            <p>Submissions for WMT 2026 are now open. Submit your 2–4 page Challenge Paper through the official EasyChair submission page by 10 October 2026.</p>
+            <p><a class="button primary" href="https://easychair.org/conferences/?conf=wmt2026" target="_blank" rel="noopener noreferrer">Submit via EasyChair ↗</a></p>
+          </article>
+          <article class="news-item">
+            <time datetime="2026-09">September 2026 🎉</time>
+            <h3>The WMT 2026 website is live!</h3>
+            <p>Welcome to the official website of the When Materials Think 2026 workshop. More updates will follow soon.</p>
+          </article>
+        </div>
       </div>
     </section>
 
