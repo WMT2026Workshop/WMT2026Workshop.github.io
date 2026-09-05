@@ -192,6 +192,7 @@
     .person-photo { position: relative; aspect-ratio: 4 / 3; margin: 0 0 28px; border-radius: calc(var(--radius) - 10px); overflow: hidden; display: grid; place-items: center; background: #26372a; }
     .person-photo::before { content: attr(data-initials); font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; color: rgba(255,255,255,.18); }
     .person-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .person-photo img.portrait-adjust-down { object-position: center 30%; }
     .person h3 { font-size: 1.7rem; margin-bottom: 7px; }
     .person .affiliation { color: var(--lime); font-weight: 750; }
     .person .affiliation a { color: var(--lime); }
@@ -409,7 +410,7 @@
           <p class="big-copy">We invite 2–4 page Challenge Papers that surface a meaningful problem requiring more than one discipline.</p>
           <p>Submissions may present an open research problem, visionary or critical position, preliminary concept, methodological limitation, interdisciplinary case study, or early system that exposes an unresolved challenge. Authors should describe both the expertise they bring and the knowledge or collaboration they hope to develop. All submissions will undergo peer review. Contributions do not need to be anonymized, and authors may retain identifying information in their manuscripts.</p>
           <div class="hero-actions">
-            <span class="button primary disabled" aria-disabled="true">Submission link · <span class="tba">To be announced</span></span>
+            <a class="button primary" href="https://easychair.org/conferences/?conf=wmt2026" target="_blank" rel="noopener noreferrer">Submission here ↗</a>
           </div>
         </div>
         <aside class="paper-box" aria-label="Submission details">
@@ -536,7 +537,7 @@
         <div class="organizers">
           <article class="person">
             <div class="person-photo" data-initials="MAM">
-              <img src="images/maria-antonella-messina.jpg" alt="Portrait of Maria Antonella Messina" loading="lazy" onerror="this.hidden=true">
+              <img class="portrait-adjust-down" src="images/maria-antonella-messina.jpg" alt="Portrait of Maria Antonella Messina" loading="lazy" onerror="this.hidden=true">
             </div>
             <h3>Maria Antonella Messina</h3>
             <p class="affiliation"><a href="https://uke.it/en" target="_blank" rel="noopener noreferrer">University of Enna “Kore”</a>, Italy</p>
